@@ -431,9 +431,19 @@ async function startServer() {
     });
   }
 
-  const PORT = 3000;
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Pandawa Movers server running on http://0.0.0.0:${PORT}`);
+  const PORT = Number(process.env.PORT) || 3000;
+  const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Pandawa Movers server running on http://localhost:${PORT}`);
+  });
+
+  server.on('error', (err: NodeJS.ErrnoException) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(
+        `Port ${PORT} sedang digunakan aplikasi lain. Tutup aplikasi tersebut atau jalankan di port lain (mis. PORT=3001).`
+      );
+      process.exit(1);
+    }
+    throw err;
   });
 }
 

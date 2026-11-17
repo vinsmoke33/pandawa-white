@@ -6,6 +6,7 @@ import { CostEstimator } from './components/CostEstimator';
 import { GallerySection } from './components/GallerySection';
 import { ReservationSection } from './components/ReservationSection';
 import { BookingLookupSection } from './components/BookingLookupSection';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { FLEET_IMAGES, HERO_IMAGE_PATH, PACKING_IMAGE_PATH } from './lib/fleetData';
 import {
   DEFAULT_INVENTORY,
@@ -496,7 +497,10 @@ export default function App() {
             <div className="text-slate-400">
               Pool Bandung: Jl. Soekarno Hatta No. 412, Bandung
             </div>
-            <div className="font-mono text-xs text-slate-400 pt-1">
+            <div className="font-mono text-xs text-slate-300 pt-1">
+              WhatsApp: 0852-1873-9913
+            </div>
+            <div className="font-mono text-xs text-slate-400">
               Operasional Lapangan: Setiap Hari 07:00 – 20:00 WIB
             </div>
           </div>
@@ -507,6 +511,12 @@ export default function App() {
           <span>Tarif transparan · Reschedule gratis H-1</span>
         </div>
       </footer>
+
+      <FloatingWhatsApp
+        input={estimateInput}
+        estimate={estimateResult}
+        selectedDate={selectedDate}
+      />
     </div>
   );
 }
